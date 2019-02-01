@@ -1,0 +1,56 @@
+import javax.swing.GroupLayout;
+import javax.swing.JPanel;
+import javax.swing.LayoutStyle;
+
+public class CalcPanel extends JPanel {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6673002098527607148L;
+
+	private GroupLayout layout; 
+	NumPanel numpanel;
+
+	
+	
+	public CalcPanel(Calculator calc){
+	
+		numpanel = new NumPanel(calc);
+		HexPanel hexpanel = new HexPanel(calc);
+		ClearPanel clearpanel = new ClearPanel(calc);
+		RadioPanel radiopanel = new RadioPanel(hexpanel,numpanel,calc);
+		OperationPanel operationpanel = new OperationPanel(calc);
+		layout = new GroupLayout(this);
+		
+			
+		this.setLayout(layout);
+		
+		layout.setAutoCreateGaps(true);
+		layout.setAutoCreateContainerGaps(false);
+		layout.setHorizontalGroup(layout.createSequentialGroup()
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 20, 20)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+						.addComponent(radiopanel))	
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(hexpanel))				
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(clearpanel) 
+				.addComponent(numpanel))
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+				.addComponent(operationpanel)) 
+				
+		);
+		layout.setVerticalGroup(layout.createSequentialGroup()
+				.addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 20, 20)
+				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+						.addComponent(radiopanel)
+				.addComponent(hexpanel)
+				.addGroup(layout.createSequentialGroup()
+				.addComponent(clearpanel)
+				.addComponent(numpanel))
+				.addComponent(operationpanel))
+		);
+		
+	radiopanel.dec.doClick();
+	}
+}
