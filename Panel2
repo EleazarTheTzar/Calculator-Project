@@ -1,0 +1,12 @@
+public class Calcpanel2 extends CalcPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8277968482009848980L;
+
+	public Calcpanel2(Calculator calc) {
+		super(calc);
+	}
+
+	private CalcPanel panel2;
+}
